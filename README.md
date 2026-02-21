@@ -2,7 +2,7 @@
 
 > A PM tool to track sprint velocity, measure burnout risk, forecast next sprint, and get AI-powered coaching — deployed on Vercel. No backend. No database. 100% free.
 
-🔗 **Live Demo:** [sprint-velocity-calculator-three.vercel.app](https://sprint-velocity-calculator-three.vercel.app)
+🔗 **Live Demo:** [sprint-velocity-calculator-three.vercel.app](https://sprint-velocity-calculator-drab.vercel.app/)
 
 ---
 
