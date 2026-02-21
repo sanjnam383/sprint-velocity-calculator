@@ -398,8 +398,15 @@
     <!-- AI Insight -->
     <div class="card">
       <div class="card-title">AI Sprint Insight</div>
+      <p style="font-size:12px; color:var(--muted); margin-bottom:14px; line-height:1.6;">Powered by Llama 3.3 70B via OpenRouter. Your key is never stored or sent anywhere except directly to OpenRouter.</p>
       <div class="api-row">
-        <input type="password" id="apiKey" placeholder="Paste your OpenRouter API key (sk-or-...)">
+        <input type="password" id="apiKey" placeholder="Paste your OpenRouter API key (sk-or-...)" autocomplete="off" spellcheck="false">
+        <button class="btn-secondary" onclick="toggleKeyVisibility()" id="toggleBtn" style="padding:10px 14px; font-size:12px; white-space:nowrap;">Show</button>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
+        <input type="checkbox" id="saveKey" onchange="handleSaveKey()" style="accent-color:var(--accent); width:14px; height:14px; cursor:pointer;">
+        <label for="saveKey" style="font-size:12px; color:var(--muted); cursor:pointer;">Remember key for this session</label>
+        <span id="keySavedBadge" style="display:none; font-size:11px; color:var(--accent3); margin-left:4px;">✓ Saved</span>
       </div>
       <div class="btn-row">
         <button class="btn-ai" onclick="getAIInsight()" id="aiBtn">
@@ -656,6 +663,61 @@ async function getAIInsight() {
   btn.disabled = false;
   btn.innerHTML = '✦ Get AI Insight';
 }
+
+function toggleKeyVisibility() {
+  const input = document.getElementById('apiKey');
+  const btn = document.getElementById('toggleBtn');
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.textContent = 'Hide';
+    btn.style.color = 'var(--accent)';
+    btn.style.borderColor = 'var(--accent)';
+    // Auto-hide after 5 seconds for safety
+    setTimeout(() => {
+      input.type = 'password';
+      btn.textContent = 'Show';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 5000);
+  } else {
+    input.type = 'password';
+    btn.textContent = 'Show';
+    btn.style.color = '';
+    btn.style.borderColor = '';
+  }
+}
+
+function handleSaveKey() {
+  const checkbox = document.getElementById('saveKey');
+  const badge = document.getElementById('keySavedBadge');
+  const key = document.getElementById('apiKey').value.trim();
+  if (checkbox.checked && key) {
+    sessionStorage.setItem('or_key', key);
+    badge.style.display = 'inline';
+  } else {
+    sessionStorage.removeItem('or_key');
+    badge.style.display = 'none';
+  }
+}
+
+// On load, restore session key if saved
+window.addEventListener('load', () => {
+  const saved = sessionStorage.getItem('or_key');
+  if (saved) {
+    document.getElementById('apiKey').value = saved;
+    document.getElementById('saveKey').checked = true;
+    document.getElementById('keySavedBadge').style.display = 'inline';
+  }
+});
+
+// Also save key to session when user types and checkbox is checked
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('apiKey').addEventListener('input', () => {
+    if (document.getElementById('saveKey').checked) {
+      handleSaveKey();
+    }
+  });
+});
 
 // Init
 initSprints(sprintCount);
