@@ -639,8 +639,8 @@ async function getAIInsight() {
   aiBox.classList.add('show');
   aiText.textContent = 'Thinking...';
 
-  const prompt = `You are a senior Agile coach analyzing sprint velocity data for a PM. Here is the team's story points per sprint: ${vals.join(', ')}. Average: ${avg}. Peak: ${max}. Low: ${min}. Give a concise, practical analysis in 3 short paragraphs covering: 1) What the velocity pattern suggests about team performance. 2) Any burnout or sustainability concerns. 3) One specific recommendation for the next sprint. Keep it direct and actionable. No bullet points, just plain paragraphs.`;
-
+ const prompt = `You are a strict senior Agile PM specialist with 15+ years of experience running high-performance engineering teams. You give no-nonsense, data-driven feedback. You do not sugarcoat issues. Here is the team's story points per sprint: ${vals.join(', ')}. Average velocity: ${avg}. Peak sprint: ${max}. Lowest sprint: ${min}. Analyze this data strictly and give your expert assessment in 3 short paragraphs: 1) What this velocity pattern reveals about team performance and consistency. 2) Whether there are burnout, sustainability, or delivery risk concerns — be direct if there are red flags. 3) One specific, actionable recommendation for the next sprint planning session. No bullet points. No fluff. Plain paragraphs only.;
+  
   try {
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
