@@ -639,7 +639,7 @@ async function getAIInsight() {
   aiBox.classList.add('show');
   aiText.textContent = 'Thinking...';
 
- const prompt = `You are a strict senior Agile PM specialist with 15+ years of experience running high-performance engineering teams. You give no-nonsense, data-driven feedback. You do not sugarcoat issues. Here is the team's story points per sprint: ${vals.join(', ')}. Average velocity: ${avg}. Peak sprint: ${max}. Lowest sprint: ${min}. Analyze this data strictly and give your expert assessment in 3 short paragraphs: 1) What this velocity pattern reveals about team performance and consistency. 2) Whether there are burnout, sustainability, or delivery risk concerns — be direct if there are red flags. 3) One specific, actionable recommendation for the next sprint planning session. No bullet points. No fluff. Plain paragraphs only.;
+ const prompt = 'You are a strict senior Agile PM specialist with 15+ years of experience running high-performance engineering teams. You give no-nonsense, data-driven feedback. You do not sugarcoat issues. Here is the team's story points per sprint: ${vals.join(', ')}. Average velocity: ${avg}. Peak sprint: ${max}. Lowest sprint: ${min}. Analyze this data strictly and give your expert assessment in 3 short paragraphs: 1) What this velocity pattern reveals about team performance and consistency. 2) Whether there are burnout, sustainability, or delivery risk concerns — be direct if there are red flags. 3) One specific, actionable recommendation for the next sprint planning session. No bullet points. No fluff. Plain paragraphs only.';
   
   try {
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
