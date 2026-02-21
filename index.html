@@ -29,8 +29,6 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
-  /* Background grid */
   body::before {
     content: '';
     position: fixed;
@@ -42,7 +40,6 @@
     pointer-events: none;
     z-index: 0;
   }
-
   .container {
     max-width: 900px;
     margin: 0 auto;
@@ -50,12 +47,9 @@
     position: relative;
     z-index: 1;
   }
-
-  /* Header */
   header { margin-bottom: 48px; }
   .tag {
     display: inline-block;
-    font-family: 'DM Mono', monospace;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.15em;
@@ -72,26 +66,17 @@
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    color: var(--text);
     margin-bottom: 12px;
   }
   h1 span { color: var(--accent); }
-  .subtitle {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* Cards */
+  .subtitle { font-size: 13px; color: var(--muted); line-height: 1.6; }
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 28px;
     margin-bottom: 20px;
-    transition: border-color 0.2s;
   }
-  .card:hover { border-color: rgba(124,106,247,0.3); }
   .card-title {
     font-family: 'Syne', sans-serif;
     font-size: 13px;
@@ -107,29 +92,18 @@
   .card-title::before {
     content: '';
     display: inline-block;
-    width: 6px;
-    height: 6px;
+    width: 6px; height: 6px;
     background: var(--accent);
     border-radius: 50%;
   }
-
-  /* Sprint input grid */
   .sprint-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     gap: 12px;
     margin-bottom: 20px;
   }
-  .sprint-item {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .sprint-item label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
+  .sprint-item { display: flex; flex-direction: column; gap: 6px; }
+  .sprint-item label { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
   .sprint-item input {
     background: var(--surface2);
     border: 1px solid var(--border);
@@ -139,16 +113,15 @@
     font-size: 15px;
     color: var(--text);
     width: 100%;
-    transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
   .sprint-item input:focus {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(124,106,247,0.1);
   }
   .sprint-item input::placeholder { color: var(--muted); }
-
-  /* Buttons */
+  .sprint-item.hidden { display: none; }
   .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
   button {
     font-family: 'Syne', sans-serif;
@@ -161,28 +134,17 @@
     cursor: pointer;
     transition: all 0.15s;
   }
-  .btn-primary {
-    background: var(--accent);
-    color: white;
-  }
+  .btn-primary { background: var(--accent); color: white; }
   .btn-primary:hover { background: #9580ff; transform: translateY(-1px); }
-  .btn-secondary {
-    background: transparent;
-    color: var(--muted);
-    border: 1px solid var(--border);
-  }
+  .btn-secondary { background: transparent; color: var(--muted); border: 1px solid var(--border); }
   .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
   .btn-ai {
     background: linear-gradient(135deg, #7c6af7, #f7716a);
     color: white;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex; align-items: center; gap: 8px;
   }
   .btn-ai:hover { opacity: 0.9; transform: translateY(-1px); }
   .btn-ai:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-  /* Stats row */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -203,14 +165,7 @@
     line-height: 1;
     margin-bottom: 6px;
   }
-  .stat-label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  /* Burnout meter */
+  .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
   .burnout-bar-wrap {
     background: var(--surface2);
     border-radius: 6px;
@@ -218,73 +173,10 @@
     overflow: hidden;
     margin: 12px 0;
   }
-  .burnout-bar {
-    height: 100%;
-    border-radius: 6px;
-    transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
-  }
-  .burnout-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  /* Chart */
-  .chart-wrap {
-    position: relative;
-    height: 260px;
-  }
-
-  /* AI insight box */
-  .ai-box {
-    background: var(--surface2);
-    border: 1px solid rgba(124,106,247,0.2);
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 16px;
-    font-size: 13px;
-    line-height: 1.8;
-    color: var(--text);
-    display: none;
-    animation: fadeIn 0.4s ease;
-    white-space: pre-wrap;
-  }
-  .ai-box.show { display: block; }
-  .ai-box .ai-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .loading-dots::after {
-    content: '...';
-    animation: dots 1.2s steps(4, end) infinite;
-  }
-  @keyframes dots {
-    0%,20% { content: '.'; }
-    40% { content: '..'; }
-    60%,100% { content: '...'; }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* API key input */
-  .api-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 16px;
-  }
+  .burnout-bar { height: 100%; border-radius: 6px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
+  .burnout-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .chart-wrap { position: relative; height: 260px; }
+  .api-row { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
   .api-row input {
     flex: 1;
     background: var(--surface2);
@@ -298,32 +190,40 @@
     transition: border-color 0.2s;
   }
   .api-row input:focus { border-color: var(--accent); color: var(--text); }
-
-  /* Trend badge */
+  .ai-box {
+    background: var(--surface2);
+    border: 1px solid rgba(124,106,247,0.2);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.8;
+    display: none;
+    animation: fadeIn 0.4s ease;
+    white-space: pre-wrap;
+  }
+  .ai-box.show { display: block; }
+  .ai-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
   .trend-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 100px;
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 600;
+    padding: 3px 10px; border-radius: 100px;
   }
   .trend-up { background: rgba(74,222,128,0.12); color: var(--green); }
   .trend-down { background: rgba(248,113,113,0.12); color: var(--red); }
   .trend-flat { background: rgba(250,204,21,0.12); color: var(--yellow); }
-
-  /* Hidden */
   .results { display: none; }
   .results.show { display: block; }
-
-  footer {
-    margin-top: 60px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--muted);
-    padding-bottom: 40px;
-  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  footer { margin-top: 60px; text-align: center; font-size: 12px; color: var(--muted); padding-bottom: 40px; }
 </style>
 </head>
 <body>
@@ -335,10 +235,22 @@
     <p class="subtitle">Track team velocity, spot burnout risk, and get AI-powered sprint insights.</p>
   </header>
 
-  <!-- INPUT CARD -->
   <div class="card">
     <div class="card-title">Enter Story Points Per Sprint</div>
-    <div class="sprint-grid" id="sprintGrid"></div>
+    <div class="sprint-grid" id="sprintGrid">
+      <div class="sprint-item" id="si1"><label>Sprint 1</label><input type="number" id="sp1" placeholder="e.g. 42" min="0" max="999"></div>
+      <div class="sprint-item" id="si2"><label>Sprint 2</label><input type="number" id="sp2" placeholder="e.g. 38" min="0" max="999"></div>
+      <div class="sprint-item" id="si3"><label>Sprint 3</label><input type="number" id="sp3" placeholder="e.g. 51" min="0" max="999"></div>
+      <div class="sprint-item" id="si4"><label>Sprint 4</label><input type="number" id="sp4" placeholder="e.g. 47" min="0" max="999"></div>
+      <div class="sprint-item" id="si5"><label>Sprint 5</label><input type="number" id="sp5" placeholder="e.g. 55" min="0" max="999"></div>
+      <div class="sprint-item" id="si6"><label>Sprint 6</label><input type="number" id="sp6" placeholder="e.g. 49" min="0" max="999"></div>
+      <div class="sprint-item hidden" id="si7"><label>Sprint 7</label><input type="number" id="sp7" placeholder="0" min="0" max="999"></div>
+      <div class="sprint-item hidden" id="si8"><label>Sprint 8</label><input type="number" id="sp8" placeholder="0" min="0" max="999"></div>
+      <div class="sprint-item hidden" id="si9"><label>Sprint 9</label><input type="number" id="sp9" placeholder="0" min="0" max="999"></div>
+      <div class="sprint-item hidden" id="si10"><label>Sprint 10</label><input type="number" id="sp10" placeholder="0" min="0" max="999"></div>
+      <div class="sprint-item hidden" id="si11"><label>Sprint 11</label><input type="number" id="sp11" placeholder="0" min="0" max="999"></div>
+      <div class="sprint-item hidden" id="si12"><label>Sprint 12</label><input type="number" id="sp12" placeholder="0" min="0" max="999"></div>
+    </div>
     <div class="btn-row">
       <button class="btn-primary" onclick="calculate()">Calculate</button>
       <button class="btn-secondary" onclick="addSprint()">+ Add Sprint</button>
@@ -347,21 +259,18 @@
     </div>
   </div>
 
-  <!-- RESULTS -->
   <div class="results" id="results">
-
-    <!-- Stats -->
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-value" id="statAvg" style="color: var(--accent)">—</div>
+        <div class="stat-value" id="statAvg" style="color:var(--accent)">—</div>
         <div class="stat-label">Avg Velocity</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value" id="statMax" style="color: var(--green)">—</div>
+        <div class="stat-value" id="statMax" style="color:var(--green)">—</div>
         <div class="stat-label">Peak Sprint</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value" id="statMin" style="color: var(--accent2)">—</div>
+        <div class="stat-value" id="statMin" style="color:var(--accent2)">—</div>
         <div class="stat-label">Lowest Sprint</div>
       </div>
       <div class="stat-card">
@@ -370,104 +279,80 @@
       </div>
     </div>
 
-    <!-- Burnout Risk -->
     <div class="card">
       <div class="card-title">Burnout Risk Score</div>
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-        <span id="burnoutLabel" style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700;">—</span>
-        <span id="burnoutScore" style="font-size:13px; color:var(--muted);">—</span>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <span id="burnoutLabel" style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;">—</span>
+        <span id="burnoutScore" style="font-size:13px;color:var(--muted);">—</span>
       </div>
       <div class="burnout-bar-wrap">
         <div class="burnout-bar" id="burnoutBar" style="width:0%"></div>
       </div>
-      <div class="burnout-label">
-        <span>Low Risk</span>
-        <span>High Risk</span>
-      </div>
-      <p id="burnoutNote" style="font-size:12px; color:var(--muted); margin-top:12px; line-height:1.6;"></p>
+      <div class="burnout-label"><span>Low Risk</span><span>High Risk</span></div>
+      <p id="burnoutNote" style="font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6;"></p>
     </div>
 
-    <!-- Chart -->
     <div class="card">
       <div class="card-title">Velocity Trend</div>
-      <div class="chart-wrap">
-        <canvas id="velocityChart"></canvas>
-      </div>
+      <div class="chart-wrap"><canvas id="velocityChart"></canvas></div>
     </div>
 
-    <!-- AI Insight -->
     <div class="card">
       <div class="card-title">AI Sprint Insight</div>
-      <p style="font-size:12px; color:var(--muted); margin-bottom:14px; line-height:1.6;">Powered by Llama 3.3 70B via OpenRouter. Your key is never stored or sent anywhere except directly to OpenRouter.</p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.6;">Powered by Llama 3.3 70B via OpenRouter. Your key goes directly to OpenRouter — never stored anywhere.</p>
       <div class="api-row">
         <input type="password" id="apiKey" placeholder="Paste your OpenRouter API key (sk-or-...)" autocomplete="off" spellcheck="false">
-        <button class="btn-secondary" onclick="toggleKeyVisibility()" id="toggleBtn" style="padding:10px 14px; font-size:12px; white-space:nowrap;">Show</button>
+        <button class="btn-secondary" onclick="toggleKey()" id="toggleBtn" style="padding:10px 14px;font-size:12px;white-space:nowrap;">Show</button>
       </div>
-      <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
-        <input type="checkbox" id="saveKey" onchange="handleSaveKey()" style="accent-color:var(--accent); width:14px; height:14px; cursor:pointer;">
-        <label for="saveKey" style="font-size:12px; color:var(--muted); cursor:pointer;">Remember key for this session</label>
-        <span id="keySavedBadge" style="display:none; font-size:11px; color:var(--accent3); margin-left:4px;">✓ Saved</span>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <input type="checkbox" id="saveKey" style="accent-color:var(--accent);width:14px;height:14px;cursor:pointer;">
+        <label for="saveKey" style="font-size:12px;color:var(--muted);cursor:pointer;">Remember key for this session</label>
+        <span id="savedBadge" style="display:none;font-size:11px;color:var(--accent3);">✓ Saved</span>
       </div>
       <div class="btn-row">
-        <button class="btn-ai" onclick="getAIInsight()" id="aiBtn">
-          ✦ Get AI Insight
-        </button>
+        <button class="btn-ai" onclick="getAIInsight()" id="aiBtn">✦ Get AI Insight</button>
       </div>
       <div class="ai-box" id="aiBox">
         <div class="ai-label">✦ AI Analysis</div>
         <div id="aiText"></div>
       </div>
     </div>
-
-  </div><!-- /results -->
+  </div>
 
   <footer>Made by Sanjana M · Turning PM chaos into clarity, one sprint at a time</footer>
 </div>
 
 <script>
 let chartInstance = null;
-let sprintCount = 6;
-
-// Init sprint inputs
-function initSprints(count) {
-  const grid = document.getElementById('sprintGrid');
-  grid.innerHTML = '';
-  for (let i = 1; i <= count; i++) {
-    grid.innerHTML += `
-      <div class="sprint-item">
-        <label>Sprint ${i}</label>
-        <input type="number" id="sp${i}" placeholder="0" min="0" max="999">
-      </div>`;
-  }
-}
+let visibleSprints = 6;
 
 function addSprint() {
-  if (sprintCount >= 12) return;
-  sprintCount++;
-  initSprints(sprintCount);
+  if (visibleSprints >= 12) return;
+  visibleSprints++;
+  document.getElementById('si' + visibleSprints).classList.remove('hidden');
 }
 
 function removeSprint() {
-  if (sprintCount <= 2) return;
-  sprintCount--;
-  initSprints(sprintCount);
+  if (visibleSprints <= 2) return;
+  const el = document.getElementById('si' + visibleSprints);
+  el.classList.add('hidden');
+  document.getElementById('sp' + visibleSprints).value = '';
+  visibleSprints--;
 }
 
 function loadSample() {
   const samples = [42, 38, 51, 47, 55, 49, 61, 44];
-  sprintCount = samples.length;
-  initSprints(sprintCount);
-  samples.forEach((v, i) => {
-    const el = document.getElementById(`sp${i+1}`);
-    if (el) el.value = v;
-  });
+  // Show exactly 8 sprints
+  while (visibleSprints < 8) { visibleSprints++; document.getElementById('si' + visibleSprints).classList.remove('hidden'); }
+  while (visibleSprints > 8) { document.getElementById('si' + visibleSprints).classList.add('hidden'); visibleSprints--; }
+  samples.forEach((v, i) => { document.getElementById('sp' + (i + 1)).value = v; });
   calculate();
 }
 
 function getValues() {
   const vals = [];
-  for (let i = 1; i <= sprintCount; i++) {
-    const v = parseFloat(document.getElementById(`sp${i}`)?.value);
+  for (let i = 1; i <= visibleSprints; i++) {
+    const v = parseFloat(document.getElementById('sp' + i).value);
     if (!isNaN(v) && v > 0) vals.push(v);
   }
   return vals;
@@ -475,61 +360,44 @@ function getValues() {
 
 function calculate() {
   const vals = getValues();
-  if (vals.length < 2) {
-    alert('Please enter at least 2 sprint values.');
-    return;
-  }
+  if (vals.length < 2) { alert('Please enter at least 2 sprint values.'); return; }
 
-  const avg = vals.reduce((a,b) => a+b, 0) / vals.length;
+  const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
   const max = Math.max(...vals);
   const min = Math.min(...vals);
 
-  // Trend — compare first half vs second half
   const half = Math.floor(vals.length / 2);
-  const firstHalfAvg = vals.slice(0, half).reduce((a,b)=>a+b,0)/half;
-  const secondHalfAvg = vals.slice(half).reduce((a,b)=>a+b,0)/(vals.length-half);
-  const trendPct = ((secondHalfAvg - firstHalfAvg) / firstHalfAvg * 100).toFixed(1);
-  const trendUp = trendPct > 2;
-  const trendDown = trendPct < -2;
+  const firstAvg = vals.slice(0, half).reduce((a, b) => a + b, 0) / half;
+  const secondAvg = vals.slice(half).reduce((a, b) => a + b, 0) / (vals.length - half);
+  const trendPct = ((secondAvg - firstAvg) / firstAvg * 100).toFixed(1);
 
-  // Burnout score — based on variance and spike drops
-  const mean = avg;
-  const variance = vals.reduce((acc, v) => acc + Math.pow(v - mean, 2), 0) / vals.length;
+  const variance = vals.reduce((acc, v) => acc + Math.pow(v - avg, 2), 0) / vals.length;
   const stdDev = Math.sqrt(variance);
-  const cv = (stdDev / mean) * 100; // coefficient of variation
-
-  // Check for big drops (>20% drop sprint-to-sprint)
+  const cv = (stdDev / avg) * 100;
   let bigDrops = 0;
   for (let i = 1; i < vals.length; i++) {
-    if ((vals[i-1] - vals[i]) / vals[i-1] > 0.2) bigDrops++;
+    if ((vals[i - 1] - vals[i]) / vals[i - 1] > 0.2) bigDrops++;
   }
-
   let burnoutScore = Math.min(100, Math.round(cv * 1.5 + bigDrops * 15));
-  if (trendDown) burnoutScore = Math.min(100, burnoutScore + 15);
+  if (trendPct < -2) burnoutScore = Math.min(100, burnoutScore + 15);
 
   const burnoutColor = burnoutScore < 30 ? 'var(--green)' : burnoutScore < 60 ? 'var(--yellow)' : 'var(--red)';
   const burnoutText = burnoutScore < 30 ? 'Low Risk' : burnoutScore < 60 ? 'Moderate Risk' : 'High Risk';
   const burnoutNote = burnoutScore < 30
     ? 'Velocity is stable. Team is performing consistently without signs of overload.'
     : burnoutScore < 60
-    ? 'Some inconsistency detected. Monitor workload — consider checking in with the team.'
-    : 'High variance and/or sharp drops detected. Strongly recommend a team health check and sprint load review.';
+    ? 'Some inconsistency detected. Monitor workload and consider a team check-in.'
+    : 'High variance or sharp drops detected. Recommend a team health check and sprint load review immediately.';
 
-  // Update stats
   document.getElementById('statAvg').textContent = Math.round(avg);
   document.getElementById('statMax').textContent = max;
   document.getElementById('statMin').textContent = min;
 
   const trendEl = document.getElementById('statTrend');
-  if (trendUp) {
-    trendEl.innerHTML = `<span class="trend-badge trend-up">↑ ${trendPct}%</span>`;
-  } else if (trendDown) {
-    trendEl.innerHTML = `<span class="trend-badge trend-down">↓ ${Math.abs(trendPct)}%</span>`;
-  } else {
-    trendEl.innerHTML = `<span class="trend-badge trend-flat">→ Stable</span>`;
-  }
+  if (trendPct > 2) trendEl.innerHTML = `<span class="trend-badge trend-up">↑ ${trendPct}%</span>`;
+  else if (trendPct < -2) trendEl.innerHTML = `<span class="trend-badge trend-down">↓ ${Math.abs(trendPct)}%</span>`;
+  else trendEl.innerHTML = `<span class="trend-badge trend-flat">→ Stable</span>`;
 
-  // Burnout
   document.getElementById('burnoutLabel').textContent = burnoutText;
   document.getElementById('burnoutLabel').style.color = burnoutColor;
   document.getElementById('burnoutScore').textContent = `Score: ${burnoutScore}/100`;
@@ -537,134 +405,39 @@ function calculate() {
   document.getElementById('burnoutBar').style.background = burnoutColor;
   document.getElementById('burnoutNote').textContent = burnoutNote;
 
-  // Chart
   drawChart(vals, avg);
-
-  // Show results
   document.getElementById('results').classList.add('show');
   document.getElementById('aiBox').classList.remove('show');
 }
 
 function drawChart(vals, avg) {
-  const labels = vals.map((_, i) => `S${i+1}`);
-  const avgLine = vals.map(() => avg);
-
   if (chartInstance) chartInstance.destroy();
-
   const ctx = document.getElementById('velocityChart').getContext('2d');
   chartInstance = new Chart(ctx, {
     type: 'line',
     data: {
-      labels,
+      labels: vals.map((_, i) => `S${i + 1}`),
       datasets: [
-        {
-          label: 'Story Points',
-          data: vals,
-          borderColor: '#7c6af7',
-          backgroundColor: 'rgba(124,106,247,0.08)',
-          borderWidth: 2.5,
-          pointBackgroundColor: '#7c6af7',
-          pointRadius: 5,
-          pointHoverRadius: 7,
-          fill: true,
-          tension: 0.3,
-        },
-        {
-          label: 'Avg Velocity',
-          data: avgLine,
-          borderColor: 'rgba(247,113,106,0.6)',
-          borderWidth: 1.5,
-          borderDash: [6, 4],
-          pointRadius: 0,
-          fill: false,
-          tension: 0,
-        }
+        { label: 'Story Points', data: vals, borderColor: '#7c6af7', backgroundColor: 'rgba(124,106,247,0.08)', borderWidth: 2.5, pointBackgroundColor: '#7c6af7', pointRadius: 5, pointHoverRadius: 7, fill: true, tension: 0.3 },
+        { label: 'Avg Velocity', data: vals.map(() => avg), borderColor: 'rgba(247,113,106,0.6)', borderWidth: 1.5, borderDash: [6, 4], pointRadius: 0, fill: false }
       ]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: false,
+      responsive: true, maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: {
-          labels: {
-            color: '#6b6b80',
-            font: { family: 'DM Mono', size: 11 },
-            boxWidth: 12,
-          }
-        },
-        tooltip: {
-          backgroundColor: '#1c1c28',
-          borderColor: '#2a2a3a',
-          borderWidth: 1,
-          titleColor: '#e8e8f0',
-          bodyColor: '#6b6b80',
-          titleFont: { family: 'Syne', size: 13, weight: 'bold' },
-          bodyFont: { family: 'DM Mono', size: 12 },
-          padding: 12,
-        }
+        legend: { labels: { color: '#6b6b80', font: { family: 'DM Mono', size: 11 }, boxWidth: 12 } },
+        tooltip: { backgroundColor: '#1c1c28', borderColor: '#2a2a3a', borderWidth: 1, titleColor: '#e8e8f0', bodyColor: '#6b6b80', titleFont: { family: 'Syne', size: 13, weight: 'bold' }, bodyFont: { family: 'DM Mono', size: 12 }, padding: 12 }
       },
       scales: {
-        x: {
-          grid: { color: 'rgba(255,255,255,0.04)' },
-          ticks: { color: '#6b6b80', font: { family: 'DM Mono', size: 11 } }
-        },
-        y: {
-          grid: { color: 'rgba(255,255,255,0.04)' },
-          ticks: { color: '#6b6b80', font: { family: 'DM Mono', size: 11 } },
-          beginAtZero: false,
-        }
+        x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b6b80', font: { family: 'DM Mono', size: 11 } } },
+        y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b6b80', font: { family: 'DM Mono', size: 11 } }, beginAtZero: false }
       }
     }
   });
 }
 
-async function getAIInsight() {
-  const apiKey = document.getElementById('apiKey').value.trim();
-  if (!apiKey) { alert('Please paste your OpenRouter API key first.'); return; }
-
-  const vals = getValues();
-  if (vals.length < 2) { alert('Calculate first.'); return; }
-
-  const avg = (vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1);
-  const max = Math.max(...vals);
-  const min = Math.min(...vals);
-
-  const btn = document.getElementById('aiBtn');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="loading-dots">Analyzing</span>';
-
-  const aiBox = document.getElementById('aiBox');
-  const aiText = document.getElementById('aiText');
-  aiBox.classList.add('show');
-  aiText.textContent = 'Thinking...';
-
- const prompt = 'You are a strict senior Agile PM specialist with 15+ years of experience running high-performance engineering teams. You give no-nonsense, data-driven feedback. You do not sugarcoat issues. Here is the team's story points per sprint: ${vals.join(', ')}. Average velocity: ${avg}. Peak sprint: ${max}. Lowest sprint: ${min}. Analyze this data strictly and give your expert assessment in 3 short paragraphs: 1) What this velocity pattern reveals about team performance and consistency. 2) Whether there are burnout, sustainability, or delivery risk concerns — be direct if there are red flags. 3) One specific, actionable recommendation for the next sprint planning session. No bullet points. No fluff. Plain paragraphs only.';
-  
-  try {
-    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'meta-llama/llama-3.3-70b-instruct:free',
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
-    const data = await res.json();
-    const text = data.choices?.[0]?.message?.content || 'No response received. Try again.';
-    aiText.textContent = text;
-  } catch (e) {
-    aiText.textContent = 'Error connecting to AI. Check your API key and try again.';
-  }
-
-  btn.disabled = false;
-  btn.innerHTML = '✦ Get AI Insight';
-}
-
-function toggleKeyVisibility() {
+function toggleKey() {
   const input = document.getElementById('apiKey');
   const btn = document.getElementById('toggleBtn');
   if (input.type === 'password') {
@@ -672,55 +445,68 @@ function toggleKeyVisibility() {
     btn.textContent = 'Hide';
     btn.style.color = 'var(--accent)';
     btn.style.borderColor = 'var(--accent)';
-    // Auto-hide after 5 seconds for safety
-    setTimeout(() => {
-      input.type = 'password';
-      btn.textContent = 'Show';
-      btn.style.color = '';
-      btn.style.borderColor = '';
-    }, 5000);
+    setTimeout(() => { input.type = 'password'; btn.textContent = 'Show'; btn.style.color = ''; btn.style.borderColor = ''; }, 5000);
   } else {
     input.type = 'password';
     btn.textContent = 'Show';
-    btn.style.color = '';
-    btn.style.borderColor = '';
+    btn.style.color = ''; btn.style.borderColor = '';
   }
 }
 
-function handleSaveKey() {
-  const checkbox = document.getElementById('saveKey');
-  const badge = document.getElementById('keySavedBadge');
+document.getElementById('saveKey').addEventListener('change', function() {
   const key = document.getElementById('apiKey').value.trim();
-  if (checkbox.checked && key) {
-    sessionStorage.setItem('or_key', key);
-    badge.style.display = 'inline';
-  } else {
-    sessionStorage.removeItem('or_key');
-    badge.style.display = 'none';
+  const badge = document.getElementById('savedBadge');
+  if (this.checked && key) { sessionStorage.setItem('or_key', key); badge.style.display = 'inline'; }
+  else { sessionStorage.removeItem('or_key'); badge.style.display = 'none'; }
+});
+
+document.getElementById('apiKey').addEventListener('input', function() {
+  if (document.getElementById('saveKey').checked) {
+    sessionStorage.setItem('or_key', this.value.trim());
   }
+});
+
+// Restore saved key
+const savedKey = sessionStorage.getItem('or_key');
+if (savedKey) {
+  document.getElementById('apiKey').value = savedKey;
+  document.getElementById('saveKey').checked = true;
+  document.getElementById('savedBadge').style.display = 'inline';
 }
 
-// On load, restore session key if saved
-window.addEventListener('load', () => {
-  const saved = sessionStorage.getItem('or_key');
-  if (saved) {
-    document.getElementById('apiKey').value = saved;
-    document.getElementById('saveKey').checked = true;
-    document.getElementById('keySavedBadge').style.display = 'inline';
+async function getAIInsight() {
+  const apiKey = document.getElementById('apiKey').value.trim();
+  if (!apiKey) { alert('Please paste your OpenRouter API key first.'); return; }
+  const vals = getValues();
+  if (vals.length < 2) { alert('Please calculate first.'); return; }
+
+  const avg = (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(1);
+  const btn = document.getElementById('aiBtn');
+  btn.disabled = true;
+  btn.textContent = 'Analyzing...';
+
+  const aiBox = document.getElementById('aiBox');
+  const aiText = document.getElementById('aiText');
+  aiBox.classList.add('show');
+  aiText.textContent = 'Thinking...';
+
+  const prompt = `You are a strict senior Agile PM specialist with 15+ years of experience running high-performance engineering teams. You give no-nonsense, data-driven feedback. You do not sugarcoat issues. Here is the team's story points per sprint: ${vals.join(', ')}. Average velocity: ${avg}. Peak sprint: ${Math.max(...vals)}. Lowest sprint: ${Math.min(...vals)}. Analyze this data strictly and give your expert assessment in 3 short paragraphs: 1) What this velocity pattern reveals about team performance and consistency. 2) Whether there are burnout, sustainability, or delivery risk concerns — be direct if there are red flags. 3) One specific, actionable recommendation for the next sprint planning session. No bullet points. No fluff. Plain paragraphs only.`;
+
+  try {
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'meta-llama/llama-3.3-70b-instruct:free', messages: [{ role: 'user', content: prompt }] })
+    });
+    const data = await res.json();
+    aiText.textContent = data.choices?.[0]?.message?.content || 'No response. Try again.';
+  } catch (e) {
+    aiText.textContent = 'Error connecting. Check your API key and try again.';
   }
-});
 
-// Also save key to session when user types and checkbox is checked
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('apiKey').addEventListener('input', () => {
-    if (document.getElementById('saveKey').checked) {
-      handleSaveKey();
-    }
-  });
-});
-
-// Init
-initSprints(sprintCount);
+  btn.disabled = false;
+  btn.textContent = '✦ Get AI Insight';
+}
 </script>
 </body>
 </html>
